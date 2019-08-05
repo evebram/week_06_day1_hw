@@ -2,17 +2,33 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>To Do List</title>
     <script src="js/bundle.js"></script>
   </head>
   <body>
+
     <div id="app">
+
       <form @submit="addNewChore">
         <input type="text" v-model="newChore"/>
+
+        <div>
+          <input type="radio" id="low" name="priority" value="Low" v-model="newPriority">
+          <label for="low">Low</label>
+        </div>
+
+        <div>
+          <input type="radio" id="high" name="priority" value="High" v-model="newPriority">
+          <label for="high">High</label>
+        </div>
+
         <input type="submit"/>
       </form>
+
       <ul>
-        <li></li>
+        <li v-for="item in items">
+          {{ item.name }}
+        </li>
       </ul>
 
     </div>
