@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>To Do List</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/styles.css">
     <script src="js/bundle.js"></script>
   </head>
   <body>
@@ -12,21 +14,17 @@
       <form @submit="addNewChore">
         <input type="text" v-model="newChore"/>
 
-        <div>
           <input type="radio" id="low" name="priority" value="Low" v-model="newPriority">
           <label for="low">Low</label>
-        </div>
 
-        <div>
           <input type="radio" id="high" name="priority" value="High" v-model="newPriority">
           <label for="high">High</label>
-        </div>
 
         <input type="submit"/>
       </form>
 
       <ul>
-        <li v-for="item in items">
+        <li v-for="item in items" :class="items.priority === 'High' ? 'Low' : 'High'">
           {{ item.name }}
         </li>
       </ul>
